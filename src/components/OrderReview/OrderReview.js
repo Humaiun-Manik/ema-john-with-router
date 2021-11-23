@@ -7,8 +7,8 @@ import Cart from '../Cart/Cart';
 import ReviewItem from '../ReviewItem/ReviewItem';
 
 const OrderReview = () => {
-    const [products] = useProducts();
-    const [cart, setCart] = useCart(products);
+    // const [products] = useProducts();
+    const [cart, setCart] = useCart();
     const history = useHistory();
 
     const handleRemove = key => {
@@ -16,10 +16,10 @@ const OrderReview = () => {
         setCart(newCart);
         removeFromDb(key);
     }
-    const handlePlaceOrder = () => {
-        history.push('/placeorder');
-        setCart([]);
-        clearTheCart();
+    const handleProceedToShipping = () => {
+        // setCart([]);
+        // clearTheCart();
+        history.push('/shipping');
     }
 
     return (
@@ -35,7 +35,7 @@ const OrderReview = () => {
             </div>
             <div className="cart-container">
                 <Cart cart={cart}>
-                    <button onClick={handlePlaceOrder} className="btn-regular">Place Order</button>
+                    <button onClick={handleProceedToShipping} className="btn-regular">Proceed to Shippig</button>
                 </Cart>
             </div>
         </div>
